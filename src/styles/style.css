@@ -243,10 +243,10 @@ body * {
     width: 160px;
     height: 100%;
     filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.2));
-    background-color: purple;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
+    background-color: orange;
 }
 .diagram-city {
     height: 100%;

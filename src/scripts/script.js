@@ -14,9 +14,17 @@ document.addEventListener("DOMContentLoaded", function() {
     RegionsUI.putRegionsOnMap( regionsForMap );
 });
 
-$(document).on("mouseover", ".region-cell", function() {
-    RegionsUI.showDiagramInfo( this );
+$(document).on("mouseover", ".region-cell", function( e ) {
+    if( !(e.target.classList.contains("region-cell__name")) && !(e.target.classList.contains("region-cell__name-span")) ) {
+        setTimeout( RegionsUI.showDiagramInfo( this ) , 3000);
+    }
 });
+
+$(document).on("mouseout", ".region-cell", function() {
+    $(".diagram-wrapper").remove();
+});
+
+
 
 // вспомогательный метод, который позволяет определить положение точки в процентах при клике в любом месте холста, закомментировать на проде
 /*document.addEventListener("click",function( event ) {
@@ -196,8 +204,9 @@ class RegionsUI {
     }
 
     static showDiagramInfo( hoveredObject ) {
-        let leftOffset = hoveredObject.offsetLeft;
-        let topOffset = hoveredObject.offsetTop;
+
+        let topOffset = hoveredObject.style.top;
+        let leftOffset = hoveredObject.style.left;
 
         let diagramItself = document.createElement('div');
         diagramItself.classList.add('diagram-itself');
@@ -214,9 +223,14 @@ class RegionsUI {
         diagramWrapper.style.top = topOffset;
         diagramWrapper.style.left = leftOffset;
 
-        let regionsMap = document.querySelector(".regions-map");
-        regionsMap.appendChild(diagramWrapper);
+        let regionsMapElems = document.querySelector(".regions-map__elems");
+        regionsMapElems.appendChild(diagramWrapper);
 
+    }
+
+    static removeDiagramInfo(  ) {
+        let diagramWrapper = document.querySelector(".diagram-wrapper");
+        diagramWrapper.parentNode.removeChild(diagramWrapper);
     }
 }
 
