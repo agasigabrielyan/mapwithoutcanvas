@@ -32,7 +32,9 @@ html, body {
 }
 body * {
     box-sizing: border-box;
+    list-style-type: none;
 }
+
 .regions-map {
     position: relative;
     background-image: url("../images/map.png");
@@ -109,6 +111,7 @@ body * {
 .regions-map__elems * {
     font-family: 'Inter-Regular';
 }
+
 .region-cell  {
     position: absolute;
     border-radius: 50%;
@@ -128,7 +131,6 @@ body * {
 .region-cell_orange {
     background-color: #F5B452;
 }
-
 .region-cell__name {
     min-width: 200px;
     position: absolute;
@@ -152,6 +154,78 @@ body * {
     line-height: 40px;
     color: #fff;
 }
-.highlight {
-    background-color: orange;
+
+.regions-map__notes {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+.regions-map__h3 {
+    font-family: "Roboto-Regular";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    color: #0079BE;
+}
+.regions-map__ul {
+    text-align: left;
+}
+.regions-map__ul li {
+    font-family: 'Roboto-Regular';
+    position: relative;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 17px;
+    color: #0079BE;
+    margin-bottom: 10px;
+}
+.excellent:before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -36px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background: #4AD19D;
+}
+.satisfactory:before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -36px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background-color: #F5B452;
+}
+.bad:before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -36px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background-color: #D94139
+}
+.nodata:before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -36px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background-color: #9A99A2;
 }
