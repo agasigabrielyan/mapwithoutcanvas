@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Круговая диаграмма</title>
+    <script src="./src/scripts/script.js" defer></script>
+    <link rel="stylesheet" href="./src/styles/style.css" />
+</head>
+<body>
+    <div class="regions-map">
+        <div class="regions-map__heading">
+            Количество подключенных организаций
+        </div>
+        <div class="regions-map__search">
+            <input onkeyup="SearchRegion.findRegions( this )" type="text" placeholder="Найти" />
+        </div>
+        <img class="regions-map__image"
+             src="./src/images/map.png"
+             width="100%" />
+    </div>
+</body>
+</html>
