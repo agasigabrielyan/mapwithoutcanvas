@@ -229,3 +229,29 @@ body * {
     -webkit-border-radius: 50%;
     background-color: #9A99A2;
 }
+
+.diagram-wrapper {
+    width: 512px;
+    height: 160px;
+    position: absolute;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+    display: flex;
+}
+.diagram-itself {
+    width: 160px;
+    height: 100%;
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.2));
+    background-color: purple;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+.diagram-city {
+    height: 100%;
+    background: #FFFFFF;
+    box-shadow: 0 4px 10px rgb(0 0 0 / 20%);
+    border-radius: 10px;
+    width: 329px;
+}

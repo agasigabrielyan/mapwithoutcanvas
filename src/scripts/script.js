@@ -14,13 +14,14 @@ document.addEventListener("DOMContentLoaded", function() {
     RegionsUI.putRegionsOnMap( regionsForMap );
 });
 
+$(document).on("mouseover", ".region-cell", function() {
+    RegionsUI.showDiagramInfo( this );
+});
+
 // вспомогательный метод, который позволяет определить положение точки в процентах при клике в любом месте холста, закомментировать на проде
 /*document.addEventListener("click",function( event ) {
     RegionsUI.getLeftTopPositions();
 });*/
-
-
-
 
 // classes
 class Region {
@@ -193,7 +194,101 @@ class RegionsUI {
                 messageText += "'" + parseFloat(offsetY/(fullHeight/100)).toFixed(2) + "%'";
             alert(messageText);
     }
+
+    static showDiagramInfo( hoveredObject ) {
+        let leftOffset = hoveredObject.offsetLeft;
+        let topOffset = hoveredObject.offsetTop;
+
+        let diagramItself = document.createElement('div');
+        diagramItself.classList.add('diagram-itself');
+
+        let diagramCity = document.createElement('div');
+        diagramCity.classList.add('diagram-city');
+
+       let diagramWrapper = document.createElement("div");
+       diagramWrapper.classList.add("diagram-wrapper");
+
+       diagramWrapper.appendChild(diagramItself);
+       diagramWrapper.appendChild(diagramCity);
+
+        diagramWrapper.style.top = topOffset;
+        diagramWrapper.style.left = leftOffset;
+
+        let regionsMap = document.querySelector(".regions-map");
+        regionsMap.appendChild(diagramWrapper);
+
+    }
 }
+
+class Drawer {
+    // рисует линию
+    static drawLine( ctx, startX, startY, endX, endY ) {
+        ctx.beginPath();
+        ctx.move( startX, startY );
+        ctx.line( endX, endY );
+        ctx.stroke();
+    }
+
+    // рисует дугу
+    static drawArc( ctx, centerX, centerY, radius, startAngle, endAngle ) {
+        ctx.beginPath();
+        ctx.arc( centerX, centerY, radius, startAngle, startAngle );
+        ctx.stroke();
+    }
+
+    // рисует кусок диаграммы
+    static drawPieslice( ctx, centerX, centerY, radius, startAngle, endAngle, color ) {
+         ctx.fillStyle = color;
+         ctx.beginPath();
+         ctx.moveTo( centerX, centerY );
+         ctx.arc( centerX, centerY, radius, startAngle, endAngle );
+         ctx.closePath();
+         ctx.fill();
+    }
+}
+
+class PieChart {
+    constructor( options ) {
+        this.options = options;
+        this.canvas = options.canvas;
+        this.ctx = this.canvas.getContext('2d');
+        this.colors = options.colors;
+    }
+
+    draw() {
+        let total_value = 0;
+        let color_index = 0;
+
+        for( let category in this.options.data ) {
+            let val = this.options.data[category];
+            total_value += val;
+        }
+
+        let startAngle = 0;
+        let nextAngle = 0;
+        let sliceAngle = 0;
+        for( let category in this.options.data ) {
+            let val = this.options.data[category];
+            sliceAngle = 2 * Math.PI * val / total_value;
+            if( nextAngle > 0 ) {
+                startAngle = nextAngle;
+            }
+            nextAngle = startAngle + sliceAngle;
+
+            Drawer.drawPieslice (
+                this.ctx,
+                this.options.sizes.left,
+                this.options.sizes.top,
+                this.options.sizes.radius,
+                startAngle,
+                nextAngle,
+                this.colors[color_index]
+            );
+            color_index++;
+        }
+    }
+}
+
 
 
 
