@@ -161,6 +161,10 @@ class RegionsUI {
                     regionCell.children[0].style.transform = "translateX(-50%)";
                 }
 
+                // определим z-index чем больше число тем меньше z-index
+                let zIndexMustBe = parseInt((1 / parseInt(regionsForMap[i].numOfOrganizations)) * 1000);
+                regionCell.style.zIndex = zIndexMustBe;
+
                 regionsMapElems.appendChild( regionCell );
         }
         return regionsMapElems;
