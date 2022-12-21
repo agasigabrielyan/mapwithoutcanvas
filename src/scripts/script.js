@@ -15,9 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 $(document).on("mouseover", ".region-cell", function( e ) {
-    if( !(e.target.classList.contains("region-cell__name")) && !(e.target.classList.contains("region-cell__name-span")) ) {
-        setTimeout( RegionsUI.showDiagramInfo( this ) , 3000);
-    }
+    RegionsUI.showDiagramInfo( this );
 });
 
 $(document).on("mouseout", ".region-cell", function() {
