@@ -138,7 +138,6 @@ body * {
     line-height: 15px;
     font-size: 16px;
     color:  #0079BE;
-    font-weight: 600;
 }
 @media(max-width: 1360px) {
     .region-cell__name {
@@ -238,6 +237,9 @@ body * {
     justify-content: space-between;
     align-items: center;
     z-index: 999;
+    transition: 750ms;
+    -webkit-transition: 750ms;
+    -moz-transition: 750ms;
     display: flex;
 }
 .diagram-itself {

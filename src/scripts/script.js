@@ -26,7 +26,8 @@ $(document).on("mouseout", ".region-cell", function() {
 
 
 
-// вспомогательный метод, который позволяет определить положение точки в процентах при клике в любом месте холста, закомментировать на проде
+// вспомогательный метод, который позволяет определить положение точки в процентах при клике в любом месте холста,
+// закомментировать на проде
 /*document.addEventListener("click",function( event ) {
     RegionsUI.getLeftTopPositions();
 });*/
@@ -227,8 +228,7 @@ class RegionsUI {
         diagramWrapper.style.top = topOffset;
         diagramWrapper.style.left = leftOffset;
 
-        let regionsMapElems = document.querySelector(".regions-map__elems");
-        regionsMapElems.appendChild(diagramWrapper);
+        hoveredObject.appendChild( diagramWrapper );
 
     }
 
