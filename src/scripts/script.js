@@ -227,6 +227,9 @@ class RegionsUI {
         let diagramItself = document.createElement('div');
         diagramItself.classList.add('diagram-itself');
 
+        let diagramCanvas = this.getDiagramCanvas( hoveredObject );
+        diagramItself.appendChild( diagramCanvas );
+
         let diagramCity = document.createElement('div');
         diagramCity.classList.add('diagram-city');
 
@@ -252,6 +255,15 @@ class RegionsUI {
     static removeDiagramInfo(  ) {
         let diagramWrapper = document.querySelector(".diagram-wrapper");
         diagramWrapper.parentNode.removeChild(diagramWrapper);
+    }
+
+    static getDiagramCanvas( hoveredObject ) {
+        let canvasCreated = document.createElement("canvas");
+        let ctxCreated = canvasCreated.getContext("2d");
+
+        debugger;
+
+        return canvasCreated;
     }
 }
 
