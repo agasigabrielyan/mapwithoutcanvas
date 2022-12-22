@@ -334,12 +334,11 @@ class RegionsUI {
     }
 
     static findRegion( inputObj ) {
-        debugger;
         let textValue = inputObj.value;
         let regex = new RegExp(textValue, 'gi');
         let regionCellNameSpan = document.querySelectorAll(".region-cell__name-span");
-
-        if( textValue !== "" ) {
+        console.log(textValue);
+        if( textValue.length >= 0 ) {
             for( let i=0; i<regionCellNameSpan.length; i++ ) {
                 let cellNameText = regionCellNameSpan[i].innerHTML;
                 cellNameText = cellNameText.replace(/(<mark class="highlight">|<\/mark>)/gim, '');
