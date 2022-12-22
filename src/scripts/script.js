@@ -229,11 +229,10 @@ class RegionsUI {
 
         let diagramItself = document.createElement('div');
         diagramItself.classList.add('diagram-itself');
-        debugger;
+
         let diagramCanvas = this.getDiagramCanvas( hoveredObject );
         diagramItself.appendChild( diagramCanvas );
 
-        debugger;
         let diagramCity = document.createElement('div');
         diagramCity.classList.add('diagram-city');
 
@@ -262,8 +261,18 @@ class RegionsUI {
     }
 
     static getDiagramCanvas( hoveredObject ) {
-        debugger;
+
+        let pieChartCreated;
         let canvasCreated = document.createElement("canvas");
+        canvasCreated.id = 'customCanvas';
+
+        canvasCreated.width = 160;
+        canvasCreated.height = 160;
+        canvasCreated.style.position = "absolute";
+        canvasCreated.style.border = "1px solid";
+        canvasCreated.style.left = "0";
+        canvasCreated.style.borderRadius = "50%";
+
         let ctxCreated = canvasCreated.getContext("2d");
         let options = {};
         options['canvas'] = canvasCreated;
@@ -272,15 +281,16 @@ class RegionsUI {
              'Отлично' : 55,
              'Удовлетворительно' : 18,
              'Плохо' : 10,
-             'Нет данных' : 2,
-        };
+             'Нет данных' : 2,};
         options['sizes'] = {
             left: hoveredObject.offsetLeft,
             top: hoveredObject.offsetTop,
             radius: 80
         };
 
-        let pieChartCreated = new PieChart( options );
+        pieChartCreated = new PieChart( options );
+
+        pieChartCreated.draw();
 
         return canvasCreated;
     }
@@ -406,7 +416,7 @@ const regionsData = [
     ["32","Архангельская область","","14"],
     ["33","Московкая область","","17"],
     ["34","Тульская область","","3"],
-    ["35","Липецкая область","","22"],
+    ["35","Липецкая область","","8"],
     ["36","Пензенская область","","2"],
     ["37","Алтайский край","","17"],
     ["38","Приморский край","","15"],
@@ -480,7 +490,7 @@ const positions = [];
       positions['Архангельская область']                    = ['25.47%','20.04%'];
       positions['Московкая область']                        = ['23.38%','45.12%'];
       positions['Тульская область']                         = ['27.77%','48.69%'];
-      positions['Липецкая область']                         = ['31.57%','50.79%'];
+      positions['Липецкая область']                         = ['31.57%','50.99%'];
       positions['Пензенская область']                       = ['39.46%','53.10%'];
       positions['Алтайский край']                           = ['70.66%','63.06%'];
       positions['Приморский край']                          = ['85.63%','65.37%'];
