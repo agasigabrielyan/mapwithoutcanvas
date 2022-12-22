@@ -207,8 +207,6 @@ class RegionsUI {
 
     static showDiagramInfo( hoveredObject ) {
 
-        debugger;
-
         let topOffset = hoveredObject.style.top;
         let leftOffset = hoveredObject.style.left;
 
@@ -225,7 +223,14 @@ class RegionsUI {
        diagramWrapper.appendChild(diagramCity);
 
         diagramWrapper.style.top = topOffset;
-        diagramWrapper.style.left = leftOffset;
+
+        if( parseInt(leftOffset) < 66 ) {
+            diagramWrapper.style.left = leftOffset;
+        } else {
+            debugger;
+            leftOffset = (parseInt(leftOffset) - 30) + "%";
+            diagramWrapper.style.left = leftOffset;
+        }
 
         hoveredObject.parentNode.appendChild( diagramWrapper );
 
