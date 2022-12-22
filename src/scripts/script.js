@@ -299,7 +299,6 @@ class RegionsUI {
         let options = {};
         options['canvas'] = canvasCreated;
         options['colors'] = ["#4AD19D", "#F5B452", "#D94139", "#9A99A2"];
-        debugger;
         options['data'] = {
              'Отлично' : parseInt(Math.random(100) * 100),
              'Удовлетворительно' : parseInt(Math.random(100) * 100),
@@ -360,14 +359,31 @@ class Drawer {
          ctx.closePath();
          ctx.fill();
 
-         debugger;
-         if( parseInt(value) > 15 ) {
-             let xPos = parseInt((radius/2)*Math.cos( endAngle ));
-             let yPos = parseInt((radius/2)*Math.sin( endAngle ));
+         if( parseInt(value) > 9 ) {
+
+             let neededAngle = ( startAngle + endAngle ) / 2;
+             debugger;
+             let xPos = radius / 1.5 * Math.cos( neededAngle ) + 80;
+             let yPos = radius / 1.5 * Math.sin( neededAngle ) + 80;
+             debugger;
              ctx.font = "bold 16px Arial";
              ctx.fillStyle = "#fff";
-             ctx.fillText(parseInt(value), parseInt(xPos) + parseInt(centerX), parseInt(yPos) + parseInt(centerY) );
+
+             // если число двухзначное то от позиции x отнимаем 10, 5 y добавляем 5
+             // если число одинарное то от позиции отнимаем 75, к y добавляем 5
+             // вычислим сколько будем добавлять и убавлять по x и y
+             let differenceX;
+             let differenceY;
+             if( value > 9) {
+                 differenceX = 70;
+                 differenceY = 85;
+             } else {
+                 differenceX = 75;
+                 differenceY = 85;
+             }
+             ctx.fillText(value, xPos - differenceX, yPos - differenceY );
          }
+
 
     }
 }
