@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     RegionsUI.putRegionsOnMap( regionsForMap );
 });
 
-$(document).on("mouseover", ".region-cell", function( e ) {
+$(document).on("click", ".region-cell", function( e ) {
     $(".diagram-wrapper").remove();
     if( !(document.querySelector(".diagram-wrapper")) ) {
         setTimeout(RegionsUI.showDiagramInfo( this ), 5000);
@@ -207,6 +207,8 @@ class RegionsUI {
 
     static showDiagramInfo( hoveredObject ) {
 
+        debugger;
+
         let topOffset = hoveredObject.style.top;
         let leftOffset = hoveredObject.style.left;
 
@@ -225,7 +227,7 @@ class RegionsUI {
         diagramWrapper.style.top = topOffset;
         diagramWrapper.style.left = leftOffset;
 
-        hoveredObject.appendChild( diagramWrapper );
+        hoveredObject.parentNode.appendChild( diagramWrapper );
 
     }
 
