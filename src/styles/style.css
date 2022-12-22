@@ -34,7 +34,18 @@ body * {
     box-sizing: border-box;
     list-style-type: none;
 }
-
+.body_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/onDiagramOpenBackground.png");
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    z-index: 9999;
+}
 .regions-map {
     position: relative;
     background-image: url("../images/map.png");
