@@ -233,8 +233,23 @@ class RegionsUI {
         let diagramCanvas = this.getDiagramCanvas( hoveredObject );
         diagramItself.appendChild( diagramCanvas );
 
+        let diagramCityInner = document.createElement("div");
+        diagramCityInner.classList.add("diagram-city-inner");
+        let someInnerHtml = "<div class='diagram-city-inner__name'>";
+                someInnerHtml += hoveredObject.children[1].innerText;
+            someInnerHtml += "</div>"
+            someInnerHtml += "<a class='canvas-link' href='" + hoveredObject.children[1].innerText + "'>Смотреть показатели в таблице"
+                someInnerHtml += "<img src='./src/images/arrow-right.svg' />"
+            someInnerHtml += "</a>"
+
+
+        diagramCityInner.innerHTML = someInnerHtml;
+
         let diagramCity = document.createElement('div');
         diagramCity.classList.add('diagram-city');
+        diagramCity.appendChild( diagramCityInner );
+
+
 
        let diagramWrapper = document.createElement("div");
        diagramWrapper.classList.add("diagram-wrapper");
