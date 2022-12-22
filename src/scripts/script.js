@@ -166,13 +166,16 @@ class RegionsUI {
                 regionCell.style.zIndex = zIndexMustBe;
 
                 // установим ширину имени региона region-cell__name-span
-                if( !longNameSpan ) {
-                    regionCell.children[1].children[0].style.width = "60px";
-                    longNameSpan = true;
-                } else {
-                    regionCell.children[1].children[0].style.width = "auto";
-                    longNameSpan = false;
+                if( parseInt(regionsForMap[i].numOfOrganizations) < 80 ) {
+                    if( !longNameSpan ) {
+                        regionCell.children[1].children[0].style.width = "60px";
+                        longNameSpan = true;
+                    } else {
+                        regionCell.children[1].children[0].style.width = "auto";
+                        longNameSpan = false;
+                    }
                 }
+
 
                 regionsMapElems.appendChild( regionCell );
         }
