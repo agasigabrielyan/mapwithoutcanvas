@@ -312,3 +312,9 @@ body * {
     top: 5px;
     left: 10px;
 }
+.highlight {
+    background: #13B5EA;
+    box-shadow: 0 5px 20px rgba(19, 127, 196, 0.8);
+    border-radius: 4px;
+    padding-bottom: 3px;
+}

@@ -334,12 +334,17 @@ class RegionsUI {
     }
 
     static findRegion( inputObj ) {
-        let textValue = (inputObj.value).toLocaleLowerCase();
+        debugger;
+        let textValue = inputObj.value;
+        let regex = new RegExp(textValue, 'gi');
         let regionCellNameSpan = document.querySelectorAll(".region-cell__name-span");
-        for( let i=0; i<regionCellNameSpan.length; i++ ) {
-            let cellNameText = (regionCellNameSpan[i].innerText).toLocaleLowerCase();
-            if( cellNameText.includes( textValue ) ) {
-                debugger;
+
+        if( textValue !== "" ) {
+            for( let i=0; i<regionCellNameSpan.length; i++ ) {
+                let cellNameText = regionCellNameSpan[i].innerHTML;
+                cellNameText = cellNameText.replace(/(<mark class="highlight">|<\/mark>)/gim, '');
+                let newText = cellNameText.replace( regex, '<mark class="highlight">$&</mark>' );
+                regionCellNameSpan[i].innerHTML = newText;
             }
         }
     }
