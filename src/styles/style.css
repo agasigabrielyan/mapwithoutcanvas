@@ -237,11 +237,11 @@ body * {
     position: absolute;
     justify-content: space-between;
     align-items: center;
-    z-index: 999;
     transition: 750ms;
     -webkit-transition: 750ms;
     -moz-transition: 750ms;
     display: flex;
+    z-index:999999999;
 }
 .diagram-itself {
     width: 160px;
