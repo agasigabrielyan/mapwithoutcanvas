@@ -361,14 +361,6 @@ class Drawer {
 
          if( parseInt(value) > 9 ) {
 
-             let neededAngle = ( startAngle + endAngle ) / 2;
-             debugger;
-             let xPos = radius / 1.5 * Math.cos( neededAngle ) + 80;
-             let yPos = radius / 1.5 * Math.sin( neededAngle ) + 80;
-             debugger;
-             ctx.font = "bold 16px Arial";
-             ctx.fillStyle = "#fff";
-
              // если число двухзначное то от позиции x отнимаем 10, 5 y добавляем 5
              // если число одинарное то от позиции отнимаем 75, к y добавляем 5
              // вычислим сколько будем добавлять и убавлять по x и y
@@ -381,7 +373,16 @@ class Drawer {
                  differenceX = 75;
                  differenceY = 85;
              }
-             ctx.fillText(value, xPos - differenceX, yPos - differenceY );
+
+             let neededAngle = ( startAngle + endAngle ) / 2;
+             debugger;
+             let xPos = radius / 1.55 * Math.cos( neededAngle ) + differenceX;
+             let yPos = radius / 1.55 * Math.sin( neededAngle ) + differenceY;
+             debugger;
+             ctx.font = "bold 16px Arial";
+             ctx.fillStyle = "#fff";
+
+             ctx.fillText(value, xPos, yPos );
          }
 
 
