@@ -299,11 +299,12 @@ class RegionsUI {
         let options = {};
         options['canvas'] = canvasCreated;
         options['colors'] = ["#4AD19D", "#F5B452", "#D94139", "#9A99A2"];
+        debugger;
         options['data'] = {
-             'Отлично' : 80,
-             'Удовлетворительно' : 43,
-             'Плохо' : 51,
-             'Нет данных' : 4
+             'Отлично' : parseInt(Math.random(100) * 100),
+             'Удовлетворительно' : parseInt(Math.random(100) * 100),
+             'Плохо' : parseInt(Math.random(100) * 100),
+             'Нет данных' : parseInt(Math.random(100) * 100)
         };
         options['sizes'] = {
             left: 80,
@@ -365,7 +366,7 @@ class Drawer {
              let yPos = parseInt((radius/2)*Math.sin( endAngle ));
              ctx.font = "bold 16px Arial";
              ctx.fillStyle = "#fff";
-             ctx.fillText(parseInt(value), parseInt(yPos) + parseInt(centerX), parseInt(xPos) + parseInt(centerY) );
+             ctx.fillText(parseInt(value), parseInt(xPos) + parseInt(centerX), parseInt(yPos) + parseInt(centerY) );
          }
 
     }
