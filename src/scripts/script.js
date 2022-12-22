@@ -300,10 +300,10 @@ class RegionsUI {
         options['canvas'] = canvasCreated;
         options['colors'] = ["#4AD19D", "#F5B452", "#D94139", "#9A99A2"];
         options['data'] = {
-             'Отлично' : (Math.random(1) * 100),
-             'Удовлетворительно' : (Math.random(1) * 100),
-             'Плохо' : (Math.random(1) * 100),
-             'Нет данных' : (Math.random(1) * 100)
+             'Отлично' : 80,
+             'Удовлетворительно' : 43,
+             'Плохо' : 51,
+             'Нет данных' : 4
         };
         options['sizes'] = {
             left: 80,
@@ -351,13 +351,23 @@ class Drawer {
     }
 
     // рисует кусок диаграммы
-    static drawPieslice( ctx, centerX, centerY, radius, startAngle, endAngle, color ) {
+    static drawPieslice( ctx, centerX, centerY, radius, startAngle, endAngle, color, value ) {
          ctx.fillStyle = color;
          ctx.beginPath();
          ctx.moveTo( centerX, centerY );
          ctx.arc( centerX, centerY, radius, startAngle, endAngle );
          ctx.closePath();
          ctx.fill();
+
+         debugger;
+         if( parseInt(value) > 15 ) {
+             let xPos = parseInt((radius/2)*Math.cos( endAngle ));
+             let yPos = parseInt((radius/2)*Math.sin( endAngle ));
+             ctx.font = "bold 16px Arial";
+             ctx.fillStyle = "#fff";
+             ctx.fillText(parseInt(value), parseInt(yPos) + parseInt(centerX), parseInt(xPos) + parseInt(centerY) );
+         }
+
     }
 }
 
@@ -396,7 +406,8 @@ class PieChart {
                 this.options.sizes.radius,
                 startAngle,
                 nextAngle,
-                this.colors[color_index]
+                this.colors[color_index],
+                this.options.data[category]
             );
             color_index++;
         }

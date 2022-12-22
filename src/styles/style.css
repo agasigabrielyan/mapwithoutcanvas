@@ -286,7 +286,6 @@ body * {
     border-radius: 10px;
     width: 329px;
     display: flex;
-    justify-content: center;
     align-items: center;
     text-align: left;
 }
