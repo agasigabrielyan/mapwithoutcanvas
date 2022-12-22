@@ -223,6 +223,8 @@ class RegionsUI {
     }
 
     static showDiagramInfo( hoveredObject ) {
+        this.removeBodyOverlay();
+        this.addBodyOverlay();
 
         let topOffset = hoveredObject.style.top;
         let leftOffset = hoveredObject.style.left;
@@ -297,7 +299,6 @@ class RegionsUI {
              'Плохо' : (Math.random(1) * 100),
              'Нет данных' : (Math.random(1) * 100)
         };
-        debugger;
         options['sizes'] = {
             left: 80,
             top: 80,
@@ -309,6 +310,21 @@ class RegionsUI {
         pieChartCreated.draw();
 
         return canvasCreated;
+    }
+
+    static addBodyOverlay() {
+        if( !document.querySelector(".body-overlay") ) {
+            let bodyOverlay = document.createElement("div");
+            bodyOverlay.classList.add("body-overlay");
+            document.body.appendChild(bodyOverlay);
+        }
+    }
+
+    static removeBodyOverlay() {
+        if(document.querySelector(".body-overlay")) {
+            let bodyOverlay = document.querySelector("bodyOverlay");
+            bodyOverlay.parenNode.removeChild(bodyOverlay);
+        }
     }
 }
 
