@@ -15,11 +15,10 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 $(document).on("mouseover", ".region-cell", function( e ) {
-    RegionsUI.showDiagramInfo( this );
-});
-
-$(document).on("mouseout", ".region-cell", function() {
     $(".diagram-wrapper").remove();
+    if( !(document.querySelector(".diagram-wrapper")) ) {
+        setTimeout(RegionsUI.showDiagramInfo( this ), 5000);
+    }
 });
 
 
