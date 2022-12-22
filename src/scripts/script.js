@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
 $(document).on("click", ".region-cell", function( e ) {
     $(".diagram-wrapper").remove();
     if( !(document.querySelector(".diagram-wrapper")) ) {
-        setTimeout(RegionsUI.showDiagramInfo( this ), 5000);
+        RegionsUI.showDiagramInfo( this );
     }
 });
 
@@ -334,7 +334,14 @@ class RegionsUI {
     }
 
     static findRegion( inputObj ) {
-        debugger;
+        let textValue = (inputObj.value).toLocaleLowerCase();
+        let regionCellNameSpan = document.querySelectorAll(".region-cell__name-span");
+        for( let i=0; i<regionCellNameSpan.length; i++ ) {
+            let cellNameText = (regionCellNameSpan[i].innerText).toLocaleLowerCase();
+            if( cellNameText.includes( textValue ) ) {
+                debugger;
+            }
+        }
     }
 }
 
