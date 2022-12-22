@@ -128,6 +128,9 @@ body * {
     border-radius: 50%;
     transform: translate(-50%, -50%);
     cursor: pointer!important;
+    transition: z-index 750ms;
+    -webkit-transition: zIndex 750ms;
+    -moz-transition: zIndex 750ms;
 }
 .region-cell:hover {
     z-index: 999999!important;
@@ -288,7 +291,7 @@ body * {
     text-align: left;
 }
 .diagram-city-inner {
-
+    padding-left: 15px;
 }
 .diagram-city-inner__name {
     font-style: normal;

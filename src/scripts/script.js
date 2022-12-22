@@ -21,7 +21,13 @@ $(document).on("click", ".region-cell", function( e ) {
     }
 });
 
-// вспомогательный метод, который позволяет определить положение точки в процентах при клике в любом месте холста,
+$(document).on("click", ".body-overlay", function() {
+    RegionsUI.removeBodyOverlay();
+    RegionsUI.removeDiagramInfo();
+});
+
+// вспомогательный метод, который позволяет определить положение
+// точки в процентах при клике в любом месте холста,
 // закомментировать на проде
 /*document.addEventListener("click",function( event ) {
     RegionsUI.getLeftTopPositions();
@@ -322,8 +328,8 @@ class RegionsUI {
 
     static removeBodyOverlay() {
         if(document.querySelector(".body-overlay")) {
-            let bodyOverlay = document.querySelector("bodyOverlay");
-            bodyOverlay.parenNode.removeChild(bodyOverlay);
+            let bodyOverlay = document.querySelector(".body-overlay");
+            bodyOverlay.parentNode.removeChild(bodyOverlay);
         }
     }
 }
