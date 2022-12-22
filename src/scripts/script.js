@@ -21,13 +21,16 @@ $(document).on("click", ".region-cell", function( e ) {
     }
 });
 
-
-
 // вспомогательный метод, который позволяет определить положение точки в процентах при клике в любом месте холста,
 // закомментировать на проде
-document.addEventListener("click",function( event ) {
+/*document.addEventListener("click",function( event ) {
     RegionsUI.getLeftTopPositions();
-});
+});*/
+
+
+
+
+
 
 // classes
 class Region {
@@ -226,10 +229,11 @@ class RegionsUI {
 
         let diagramItself = document.createElement('div');
         diagramItself.classList.add('diagram-itself');
-
+        debugger;
         let diagramCanvas = this.getDiagramCanvas( hoveredObject );
         diagramItself.appendChild( diagramCanvas );
 
+        debugger;
         let diagramCity = document.createElement('div');
         diagramCity.classList.add('diagram-city');
 
@@ -258,6 +262,7 @@ class RegionsUI {
     }
 
     static getDiagramCanvas( hoveredObject ) {
+        debugger;
         let canvasCreated = document.createElement("canvas");
         let ctxCreated = canvasCreated.getContext("2d");
         let options = {};
@@ -268,6 +273,11 @@ class RegionsUI {
              'Удовлетворительно' : 18,
              'Плохо' : 10,
              'Нет данных' : 2,
+        };
+        options['sizes'] = {
+            left: hoveredObject.offsetLeft,
+            top: hoveredObject.offsetTop,
+            radius: 80
         };
 
         let pieChartCreated = new PieChart( options );
