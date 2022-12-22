@@ -332,6 +332,10 @@ class RegionsUI {
             bodyOverlay.parentNode.removeChild(bodyOverlay);
         }
     }
+
+    static findRegion( inputObj ) {
+        debugger;
+    }
 }
 
 class Drawer {
@@ -361,8 +365,8 @@ class Drawer {
 
          if( parseInt(value) > 9 ) {
 
-             // если число двухзначное то от позиции x отнимаем 10, 5 y добавляем 5
-             // если число одинарное то от позиции отнимаем 75, к y добавляем 5
+             // если число двухзначное то от позиции x отнимаем 10, к y добавляем 5
+             // если число однозначное то от позиции отнимаем 75, к y добавляем 5
              // вычислим сколько будем добавлять и убавлять по x и y
              let differenceX;
              let differenceY;
@@ -374,12 +378,11 @@ class Drawer {
                  differenceY = 85;
              }
 
+             // угол координаты точки на окружности котораго нам необходимо вычислить
              let neededAngle = ( startAngle + endAngle ) / 2;
-             debugger;
              let xPos = radius / 1.55 * Math.cos( neededAngle ) + differenceX;
              let yPos = radius / 1.55 * Math.sin( neededAngle ) + differenceY;
-             debugger;
-             ctx.font = "bold 16px Arial";
+             ctx.font = "bold 16px Inter-Regular";
              ctx.fillStyle = "#fff";
 
              ctx.fillText(value, xPos, yPos );
