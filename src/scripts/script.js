@@ -77,6 +77,8 @@ class RegionsUI {
         regionsMapElems.classList.add("regions-map__elems");
 
         let previousColorForSmallCircle = 'orange';
+        let longNameSpan = false;
+
         for( let i=0; i<regionsForMap.length; i++ ) {
             // создадим элемент, который будет содержать количество организаций
             let regionCellSatisfaction = document.createElement("div");
@@ -119,7 +121,7 @@ class RegionsUI {
                     regionCell.classList.add("region-cell_green");
                 }
 
-                // установим ширину элемента в пикселях в зависимости от количества организаций в регионе
+                // установим ширину элемента regionCell в пикселях в зависимости от количества организаций в регионе
                 if( parseInt(regionsForMap[i].numOfOrganizations) < 20 ) {
                     regionCell.style.width = "33.61px";
                     regionCell.style.height = "33.61px";
@@ -162,6 +164,15 @@ class RegionsUI {
                 // определим z-index чем больше число тем меньше z-index
                 let zIndexMustBe = parseInt((1 / parseInt(regionsForMap[i].numOfOrganizations)) * 1000);
                 regionCell.style.zIndex = zIndexMustBe;
+
+                // установим ширину имени региона region-cell__name-span
+                if( !longNameSpan ) {
+                    regionCell.children[1].children[0].style.width = "60px";
+                    longNameSpan = true;
+                } else {
+                    regionCell.children[1].children[0].style.width = "auto";
+                    longNameSpan = false;
+                }
 
                 regionsMapElems.appendChild( regionCell );
         }
@@ -227,7 +238,6 @@ class RegionsUI {
         if( parseInt(leftOffset) < 66 ) {
             diagramWrapper.style.left = leftOffset;
         } else {
-            debugger;
             leftOffset = (parseInt(leftOffset) - 30) + "%";
             diagramWrapper.style.left = leftOffset;
         }
