@@ -269,7 +269,6 @@ class RegionsUI {
         canvasCreated.width = 160;
         canvasCreated.height = 160;
         canvasCreated.style.position = "absolute";
-        canvasCreated.style.border = "1px solid";
         canvasCreated.style.left = "0";
         canvasCreated.style.borderRadius = "50%";
 
@@ -278,13 +277,15 @@ class RegionsUI {
         options['canvas'] = canvasCreated;
         options['colors'] = ["#4AD19D", "#F5B452", "#D94139", "#9A99A2"];
         options['data'] = {
-             'Отлично' : 55,
-             'Удовлетворительно' : 18,
-             'Плохо' : 10,
-             'Нет данных' : 2,};
+             'Отлично' : (Math.random(1) * 100),
+             'Удовлетворительно' : (Math.random(1) * 100),
+             'Плохо' : (Math.random(1) * 100),
+             'Нет данных' : (Math.random(1) * 100)
+        };
+        debugger;
         options['sizes'] = {
-            left: hoveredObject.offsetLeft,
-            top: hoveredObject.offsetTop,
+            left: 80,
+            top: 80,
             radius: 80
         };
 
