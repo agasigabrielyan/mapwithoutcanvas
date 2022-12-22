@@ -260,8 +260,17 @@ class RegionsUI {
     static getDiagramCanvas( hoveredObject ) {
         let canvasCreated = document.createElement("canvas");
         let ctxCreated = canvasCreated.getContext("2d");
+        let options = {};
+        options['canvas'] = canvasCreated;
+        options['colors'] = ["#4AD19D", "#F5B452", "#D94139", "#9A99A2"];
+        options['data'] = {
+             'Отлично' : 55,
+             'Удовлетворительно' : 18,
+             'Плохо' : 10,
+             'Нет данных' : 2,
+        };
 
-        debugger;
+        let pieChartCreated = new PieChart( options );
 
         return canvasCreated;
     }
